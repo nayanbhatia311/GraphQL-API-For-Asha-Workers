@@ -5,9 +5,10 @@ const schema = require('./schema');
 const mongoose = require('mongoose');
 const family_info = require('./models/family');
 const AshaWorkerSchema=require('./models/Asha_worker');
+const cors=require("cors")
 // const temp_family=require('./temp_family');
 const app = express();
-
+app.use(cors());
 app.use(bodyParser.json());
 
 //when events, createEvents is called, function of rootValue is called
@@ -141,13 +142,19 @@ app.use('/graphql', graphqlHttp({
 }));
 
 
-mongoose.connect(`mongodb://root:0LONzSmXMGrz@52.66.200.43:27017/Asha_hosp_Nayan?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false`, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true
-});
-const db = mongoose.connection;
-db.once('open', function() {
-    app.listen(3000);
+// mongoose.connect(`mongodb://root:0LONzSmXMGrz@52.66.200.43:27017/Asha_hosp_Nayan?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false`, {
+//     useUnifiedTopology: true,
+//     useNewUrlParser: true
+// });
+// const db = mongoose.connection;
+// db.once('open', function() {
+    
 
 
-});
+// });
+
+mongoose.connect(`mongodb://root:0LONzSmXMGrz@52.66.200.43:27017/Asha_hosp_Nayan?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false`,
+{ useNewUrlParser: true, useUnifiedTopology: true }
+)
+.then(() => app.listen(3000))
+.catch(err => console.log("Error: ", err.message));
