@@ -28,6 +28,11 @@ app.use('/graphql', graphqlHttp({
           return family_info.findById(_id).populate('ashaWorkerObjectid');
 
         },
+        searchName:({name})=>{
+            let search=`\"${name}\""`
+            console.log(search);
+            return family_info.find({ $text: { $search: search } }).populate('ashaWorkerObjectid');
+        },
         createFamily: async (args, parent) => {
       
 
@@ -133,7 +138,12 @@ app.use('/graphql', graphqlHttp({
             throw err;
           }
 
+        },
+        updateFamily(args,parent){
+            console.log(args.input);
+
         }
+
 
 
 
