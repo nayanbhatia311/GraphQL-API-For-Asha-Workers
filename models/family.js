@@ -94,7 +94,7 @@ const familySchema=new Schema({
 
 
        
-    },{collection:'family_info_temp'});
+    },{collection:'family_info'});
 
 
     
