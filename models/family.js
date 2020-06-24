@@ -41,11 +41,11 @@ const familySchema=new Schema({
                 OPV: [Date],
                 B2VIT: [Date],
                 BCG: [Date],
-                OPV1IPV1Penta1Rota1: [Date],
-                OPV2Penta2Rota2: [Date],
-                OPV3IPV2Penta3Rota3: [Date],
-                MR1VitA1: [Date],
-                DPTBOPVBMR2VitA2: [Date]
+                OPV1_IPV1_Penta1_Rota1: [Date],
+                OPV_2_Penta_2_Rota_2: [Date],
+                OPV_3_IPV2_Penta3_Rota3: [Date],
+                MR1_VitA1: [Date],
+                DPTB_OPVB_MR2_VitA2: [Date]
             }
         }],
         pregnancy: [{

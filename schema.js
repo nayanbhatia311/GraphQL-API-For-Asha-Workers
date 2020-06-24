@@ -22,6 +22,7 @@ module.exports=buildSchema(`
     wife: String
     coupleid: Int
     familyPlanningMethod: String
+    fpmdates:[Float]
     ifNoOption: IfNoOption
     totalChildren: TotalChildren
   }
@@ -58,11 +59,11 @@ module.exports=buildSchema(`
 
   type Vaccination
   {
-    DPTBOPVBMR2VitA2: [Float]
-    MR1VitA1: [Float]
-    OPV3IPV2Penta3Rota3: [Float]
-    OPV2Penta2Rota2: [Float]
-    OPV1IPV1Penta1Rota1: [Float]
+    DPTB_OPVB_MR2_VitA2: [Float]
+    MR1_VitA1: [Float]
+    OPV_3_IPV2_Penta3_Rota3: [Float]
+    OPV_2_Penta_2_Rota_2: [Float]
+    OPV1_IPV1_Penta1_Rota1: [Float]
     BCG: [Float]
     B2VIT: [Float]
     OPV: [Float]
