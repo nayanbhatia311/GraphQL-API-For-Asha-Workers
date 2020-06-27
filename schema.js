@@ -28,7 +28,8 @@ module.exports=buildSchema(`
   }
   type Delivery
   {
-    typeOfPregnancy: String outcome_of_pregnancy: String
+    typeOfPregnancy: String
+    outcomeOfPregnancy: String
   }
   type Pmmvy
   {
