@@ -276,6 +276,7 @@ app.use('/graphql', graphqlHttp({
                     }
 
             });
+           
           
             return family_info.updateOne(filter,{"$set":update},function(err,collection){
                 if(err) throw err;
@@ -288,7 +289,7 @@ app.use('/graphql', graphqlHttp({
             let members_copy=args.input
             if(members_copy.length>0){
             for(i=0;i<members_copy.length;i++){
-                console.log(i)
+                
                 members_copy[i]['memberid']=new ObjectID();
             }
         }
@@ -309,7 +310,7 @@ app.use('/graphql', graphqlHttp({
             let eligibileCoupleName_copy=args.input
             if(eligibileCoupleName_copy.length>0){
             for(i=0;i<eligibileCoupleName_copy.length;i++){
-                console.log(i)
+                
                 eligibileCoupleName_copy[i]['eligibleCoupleNameId']=new ObjectID();
             }
         }
@@ -331,7 +332,7 @@ app.use('/graphql', graphqlHttp({
             let Children_copy=args.input
             if(Children_copy.length>0){
             for(i=0;i<Children_copy.length;i++){
-                console.log(i)
+            
                 Children_copy[i]['childrenObjectId']=new ObjectID();
             }
         }
@@ -352,7 +353,7 @@ app.use('/graphql', graphqlHttp({
             let Pregnancy_copy=args.input
             if(Pregnancy_copy.length>0){
             for(i=0;i<Pregnancy_copy.length;i++){
-                console.log(i)
+        
                 Pregnancy_copy[i]['pregnancyId']=new ObjectID();
             }
         }

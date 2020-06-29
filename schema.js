@@ -160,7 +160,8 @@ module.exports=buildSchema(`
   }
   input DeliveryInput
   {
-    inputOfPregnancy: String outcomeOfPregnancy: String
+    typeOfPregnancy: String 
+    outcomeOfPregnancy: String
   }
   input PmmvyInput
   {
