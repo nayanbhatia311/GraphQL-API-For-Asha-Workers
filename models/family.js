@@ -21,7 +21,7 @@ const familySchema=new Schema({
             belowPovertyLine: Boolean
         },
         members: [{
-            _id:Schema.Types.ObjectId,
+            memberid:Schema.Types.ObjectId,
             membername: String,
             age: Number,
             sex: String,
@@ -33,7 +33,7 @@ const familySchema=new Schema({
             modality: [String]
         }],
         children: [{
-            _id:Schema.Types.ObjectId,
+            childrenObjectId:Schema.Types.ObjectId,
             coupleid: Number,
             childname: String,
             childRCH: String,
@@ -49,7 +49,7 @@ const familySchema=new Schema({
             }
         }],
         pregnancy: [{
-            _id:Schema.Types.ObjectId,
+            pregnancyId:Schema.Types.ObjectId,
             para: Number,
             name: String,
             complicationPreviousPregnancy: String,
@@ -72,7 +72,7 @@ const familySchema=new Schema({
             }
         }],
         eligibleCoupleName: [{
-            _id:Schema.Types.ObjectId,
+            eligibleCoupleNameId:Schema.Types.ObjectId,
             husband: String,
             wife: String,
             coupleid: Number,
@@ -94,8 +94,8 @@ const familySchema=new Schema({
 
 
        
-    },{collection:'family_info'});
+    },{collection:'family_info_temp'});
 
 
     
-    module.exports=mongoose.model('family_info',familySchema);
+    module.exports=mongoose.model('family_info_temp',familySchema);

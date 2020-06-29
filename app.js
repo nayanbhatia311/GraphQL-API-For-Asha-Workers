@@ -5,7 +5,8 @@ const schema = require('./schema');
 const mongoose = require('mongoose');
 const family_info = require('./models/family');
 const AshaWorkerSchema=require('./models/Asha_worker');
-const cors=require("cors")
+const cors=require("cors");
+const { updateMany } = require('./models/Asha_worker');
 // const temp_family=require('./temp_family');
 const app = express();
 app.use(cors());
@@ -36,7 +37,7 @@ app.use('/graphql', graphqlHttp({
         createFamily: async (args, parent) => {
       
 
-
+            
             let members = [];
             let eligibleCoupleNames = [];
             let children = [];
@@ -130,7 +131,7 @@ app.use('/graphql', graphqlHttp({
             });
 
             try {
-            return await family_schema.save();
+            return "success";
             
           }
           catch (err) {
@@ -139,9 +140,154 @@ app.use('/graphql', graphqlHttp({
           }
 
         },
-        updateFamily(args,parent){
-            console.log(args.input);
+        updateGeneralInfo(args,parent){
+           
+            const filter={_id:args.id};
+            const keys=Object.keys(args.input);
+            let update={}
+            keys.forEach(element => {
 
+                console.log(element);
+                update['general.'+element]=args.input[element]
+
+            });
+            
+
+
+            console.log(update);
+           
+            try {
+                family_info.findOneAndUpdate(filter,update,{new:true});
+                return "success";
+              }
+              catch (err) {
+                console.log(err);
+                throw err;
+              }
+
+        },
+        updateMembers(args,parents){
+            const filter={'members.memberid':args.memberid};
+            const keys=Object.keys(args.input);
+            let update={}
+            keys.forEach(element => {
+
+                console.log(element);
+                update['members.$.'+element]=args.input[element]
+
+            });
+    
+            
+               
+                return family_info.updateOne(filter,{"$set":update},function(err,collection){
+                    if(err) throw err;
+                })
+        },
+        updateEligibleCoupleName(args,parent){
+            const filter={'eligibleCoupleName.eligibleCoupleNameId':args.eligibleCoupleNameId};
+            const keys=Object.keys(args.input);
+            let update={}
+            keys.forEach(element => {
+
+                console.log(element);
+                if(element==="ifNoOption"){
+                    const ifNoOptionKey=Object.keys(args.input.ifNoOption);
+                    
+                    ifNoOptionKey.forEach(ifNoOptionElement=>{
+                        update['eligibleCoupleName.$.ifNoOption.'+ifNoOptionElement]=args.input.ifNoOption[ifNoOptionElement];
+                    });
+                }
+                else if(element==='totalChildren'){
+
+                    const totalChildrenKey=Object.keys(args.input.totalChildren);
+                    
+                    totalChildrenKey.forEach(totalChildrenElement=>{
+                        update['eligibleCoupleName.$.totalChildren.'+totalChildrenElement]=args.input.totalChildren[totalChildrenElement];
+                    });
+
+                }
+                else{
+                update['eligibleCoupleName.$.'+element]=args.input[element]
+                }
+
+            });
+            // console.log(update);
+            
+               
+                return family_info.updateOne(filter,{"$set":update},function(err,collection){
+                    if(err) throw err;
+                });
+
+        },
+        updateChildren(args,parent){
+
+            const filter={'children.childrenObjectId':args.childrenObjectId};
+            const keys=Object.keys(args.input);
+            let update={}
+            keys.forEach(element => {
+
+                console.log(element);
+                if(element==="vaccination"){
+                    const vaccinationKey=Object.keys(args.input.vaccination);
+                    
+                    vaccinationKey.forEach(vaccinationElement=>{
+                        update['children.$.vaccination.'+vaccinationElement]=args.input.vaccination[vaccinationElement];
+                    });
+                }
+                
+                else{
+                update['children.$.'+element]=args.input[element]
+                }
+
+            });
+            // console.log(update);
+            
+               
+                return family_info.updateOne(filter,{"$set":update},function(err,collection){
+                    if(err) throw err;
+                });
+
+        },
+        updatePregnancy(args,parent){
+
+            const filter={'pregnancy.pregnancyId':args.pregnancyId};
+            const keys=Object.keys(args.input);
+            let update={}
+            console.log(args.input.JSY)
+            keys.forEach(element => {
+
+                console.log(element);
+                if(element==="JSY"){
+                    const JSYKey=Object.keys(args.input.JSY);
+                    
+                    JSYKey.forEach(JSYElement=>{
+                        update['pregnancy.$.JSY.'+JSYElement]=args.input.JSY[JSYElement];
+                    });
+                }
+                else if(element==="PMMVY"){
+                    const PMMVYKey=Object.keys(args.input.PMMVY);
+                    
+                    PMMVYKey.forEach(PMMVYElement=>{
+                        update['pregnancy.$.PMMVY.'+PMMVYElement]=args.input.PMMVY[PMMVYElement];
+                    });
+                }
+                else if(element==="delivery"){
+                    const deliveryKey=Object.keys(args.input.delivery);
+                    
+                    deliveryKey.forEach(deliveryElement=>{
+                        update['pregnancy.$.delivery.'+deliveryElement]=args.input.delivery[deliveryElement];
+                    });
+                }
+                else{
+                    update['pregnancy.$.'+element]=args.input[element]
+                    }
+
+            });
+            console.log(update);
+            return family_info.updateOne(filter,{"$set":update},function(err,collection){
+                if(err) throw err;
+            });
+               
         }
 
 
