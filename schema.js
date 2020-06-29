@@ -191,11 +191,11 @@ module.exports=buildSchema(`
 
   input VaccinationInput
   {
-    DPTBOPVBMR2VitA2: [Float]
-    MR1VitA1: [Float]
-    OPV3IPV2Penta3Rota3: [Float]
-    OPV2Penta2Rota2: [Float]
-    OPV1IPV1Penta1Rota1: [Float]
+    DPTB_OPVB_MR2_VitA2: [Float]
+    MR1_VitA1: [Float]
+    OPV_3_IPV2_Penta3_Rota3: [Float]
+    OPV_2_Penta_2_Rota_2: [Float]
+    OPV1_IPV1_Penta1_Rota1: [Float]
     BCG: [Float]
     B2VIT: [Float]
     OPV: [Float]
@@ -268,6 +268,11 @@ module.exports=buildSchema(`
     updatePregnancy(pregnancyId:ID!,input:PregnancyInput):modifiedMongo
 
     addMembers(id:ID!,input:[MembersInput]):String
+    addEligibleCoupleName(id:ID!,input:[EligibleCoupleNameInput]):String
+    addChildren(id:ID!,input:[ChildrenInput]):String
+    addPregnancy(id:ID!,input:[PregnancyInput]):String
+
+
   }
 
   schema

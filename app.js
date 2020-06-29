@@ -303,6 +303,71 @@ app.use('/graphql', graphqlHttp({
             });
             
             return "success";
+        },
+        addEligibleCoupleName(args,parents){
+
+            let eligibileCoupleName_copy=args.input
+            if(eligibileCoupleName_copy.length>0){
+            for(i=0;i<eligibileCoupleName_copy.length;i++){
+                console.log(i)
+                eligibileCoupleName_copy[i]['eligibleCoupleNameId']=new ObjectID();
+            }
+        }
+            
+            
+            family_info.updateOne({_id:args.id},{$push:{eligibleCoupleName:eligibileCoupleName_copy}},function (error, success) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log(success);
+                }
+            });
+            
+            return "success";
+
+        },
+        addChildren(args,parents){
+
+            let Children_copy=args.input
+            if(Children_copy.length>0){
+            for(i=0;i<Children_copy.length;i++){
+                console.log(i)
+                Children_copy[i]['childrenObjectId']=new ObjectID();
+            }
+        }
+            
+            
+            family_info.updateOne({_id:args.id},{$push:{children:Children_copy}},function (error, success) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log(success);
+                }
+            });
+            
+            return "success";
+
+        },
+        addPregnancy(args,parents){
+            let Pregnancy_copy=args.input
+            if(Pregnancy_copy.length>0){
+            for(i=0;i<Pregnancy_copy.length;i++){
+                console.log(i)
+                Pregnancy_copy[i]['pregnancyId']=new ObjectID();
+            }
+        }
+            
+            
+            family_info.updateOne({_id:args.id},{$push:{pregnancy:Pregnancy_copy}},function (error, success) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log(success);
+                }
+            });
+            
+            return "success";
+
         }
 
 
