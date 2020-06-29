@@ -6,8 +6,8 @@ const mongoose = require('mongoose');
 const family_info = require('./models/family');
 const AshaWorkerSchema=require('./models/Asha_worker');
 const cors=require("cors");
-const { updateMany } = require('./models/Asha_worker');
-// const temp_family=require('./temp_family');
+
+
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
@@ -146,15 +146,10 @@ app.use('/graphql', graphqlHttp({
             const keys=Object.keys(args.input);
             let update={}
             keys.forEach(element => {
-
-                console.log(element);
                 update['general.'+element]=args.input[element]
 
             });
-            
 
-
-            console.log(update);
            
             try {
                 family_info.findOneAndUpdate(filter,update,{new:true});
@@ -172,7 +167,6 @@ app.use('/graphql', graphqlHttp({
             let update={}
             keys.forEach(element => {
 
-                console.log(element);
                 update['members.$.'+element]=args.input[element]
 
             });
@@ -189,7 +183,7 @@ app.use('/graphql', graphqlHttp({
             let update={}
             keys.forEach(element => {
 
-                console.log(element);
+     
                 if(element==="ifNoOption"){
                     const ifNoOptionKey=Object.keys(args.input.ifNoOption);
                     
@@ -211,7 +205,7 @@ app.use('/graphql', graphqlHttp({
                 }
 
             });
-            // console.log(update);
+
             
                
                 return family_info.updateOne(filter,{"$set":update},function(err,collection){
@@ -226,7 +220,6 @@ app.use('/graphql', graphqlHttp({
             let update={}
             keys.forEach(element => {
 
-                console.log(element);
                 if(element==="vaccination"){
                     const vaccinationKey=Object.keys(args.input.vaccination);
                     
@@ -240,7 +233,7 @@ app.use('/graphql', graphqlHttp({
                 }
 
             });
-            // console.log(update);
+           
             
                
                 return family_info.updateOne(filter,{"$set":update},function(err,collection){
@@ -253,10 +246,9 @@ app.use('/graphql', graphqlHttp({
             const filter={'pregnancy.pregnancyId':args.pregnancyId};
             const keys=Object.keys(args.input);
             let update={}
-            console.log(args.input.JSY)
+    
             keys.forEach(element => {
 
-                console.log(element);
                 if(element==="JSY"){
                     const JSYKey=Object.keys(args.input.JSY);
                     
@@ -283,7 +275,7 @@ app.use('/graphql', graphqlHttp({
                     }
 
             });
-            console.log(update);
+          
             return family_info.updateOne(filter,{"$set":update},function(err,collection){
                 if(err) throw err;
             });
@@ -297,17 +289,6 @@ app.use('/graphql', graphqlHttp({
     graphiql: true //resolvers
 }));
 
-
-// mongoose.connect(`mongodb://root:0LONzSmXMGrz@52.66.200.43:27017/Asha_hosp_Nayan?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false`, {
-//     useUnifiedTopology: true,
-//     useNewUrlParser: true
-// });
-// const db = mongoose.connection;
-// db.once('open', function() {
-    
-
-
-// });
 
 mongoose.connect(`mongodb://root:0LONzSmXMGrz@52.66.200.43:27017/Asha_hosp_Nayan?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false`,
 { useNewUrlParser: true, useUnifiedTopology: true }
