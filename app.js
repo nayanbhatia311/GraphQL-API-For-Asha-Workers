@@ -1,4 +1,5 @@
 const express = require('express');
+const ObjectID = require('mongodb').ObjectID;
 const bodyParser = require('body-parser');
 const graphqlHttp = require('express-graphql');
 const schema = require('./schema');
@@ -280,6 +281,28 @@ app.use('/graphql', graphqlHttp({
                 if(err) throw err;
             });
                
+        },
+
+        addMembers(args,parents){
+        
+            let members_copy=args.input
+            if(members_copy.length>0){
+            for(i=0;i<members_copy.length;i++){
+                console.log(i)
+                members_copy[i]['memberid']=new ObjectID();
+            }
+        }
+            
+            
+            family_info.updateOne({_id:args.id},{$push:{members:members_copy}},function (error, success) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log(success);
+                }
+            });
+            
+            return "success";
         }
 
 
