@@ -16,6 +16,7 @@ app.use(bodyParser.json());
 //when events, createEvents is called, function of rootValue is called
 app.use('/graphql', graphqlHttp({
     schema: schema,
+    
     rootValue: {
         getFamilies: ({ashaWorkerObjectid}) => {
             return family_info.find({ashaWorkerObjectid:ashaWorkerObjectid}).populate('ashaWorkerObjectid');
