@@ -150,16 +150,13 @@ app.use('/graphql', graphqlHttp({
                 update['general.'+element]=args.input[element]
 
             });
+            console.log(update);
+            console.log(args.id);
 
            
-            try {
-                family_info.findOneAndUpdate(filter,update,{new:true});
-                return "success";
-              }
-              catch (err) {
-                console.log(err);
-                throw err;
-              }
+            return family_info.updateOne(filter,{"$set":update},function(err,collection){
+                if(err) throw err;
+            })
 
         },
         updateMembers(args,parents){
