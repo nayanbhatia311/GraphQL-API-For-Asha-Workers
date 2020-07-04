@@ -284,8 +284,6 @@ app.use('/graphql', graphqlHttp({
 
         },
         updatePregnancy(args,parent){
-            console.log()
-            console.log(mongoose.Types.ObjectId.isValid(args.pregnancyId));
             if(mongoose.Types.ObjectId.isValid(args.pregnancyId)){
             const filter={'pregnancy.pregnancyId':args.pregnancyId};
             const keys=Object.keys(args.input);
@@ -337,7 +335,7 @@ app.use('/graphql', graphqlHttp({
         },
 
         addMembers(args,parents){
-        
+            if(mongoose.Types.ObjectId.isValid(args.id)){
             let members_copy=args.input
             if(members_copy.length>0){
             for(i=0;i<members_copy.length;i++){
@@ -356,9 +354,14 @@ app.use('/graphql', graphqlHttp({
             });
             
             return "success";
-        },
+        }
+            else{
+                return "Invalid Object id";
+                
+            }
+            },
         addEligibleCoupleName(args,parents){
-
+            if(mongoose.Types.ObjectId.isValid(args.id)){
             let eligibileCoupleName_copy=args.input
             if(eligibileCoupleName_copy.length>0){
             for(i=0;i<eligibileCoupleName_copy.length;i++){
@@ -377,10 +380,15 @@ app.use('/graphql', graphqlHttp({
             });
             
             return "success";
+        }
+        else{
+            return "Invalid Object id";
+            
+        }
 
         },
         addChildren(args,parents){
-
+            if(mongoose.Types.ObjectId.isValid(args.id)){
             let Children_copy=args.input
             if(Children_copy.length>0){
             for(i=0;i<Children_copy.length;i++){
@@ -399,9 +407,15 @@ app.use('/graphql', graphqlHttp({
             });
             
             return "success";
+        }
+        else{
+            return "Invalid Object id";
+            
+        }
 
         },
         addPregnancy(args,parents){
+            if(mongoose.Types.ObjectId.isValid(args.id)){
             let Pregnancy_copy=args.input
             if(Pregnancy_copy.length>0){
             for(i=0;i<Pregnancy_copy.length;i++){
@@ -420,6 +434,11 @@ app.use('/graphql', graphqlHttp({
             });
             
             return "success";
+        }
+        else{
+            return "Invalid Object id";
+            
+        }
 
         }
 
