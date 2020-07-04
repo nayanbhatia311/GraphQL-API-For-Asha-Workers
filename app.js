@@ -9,6 +9,7 @@ const AshaWorkerSchema=require('./models/Asha_worker');
 const cors=require("cors");
 
 
+
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
@@ -133,6 +134,7 @@ app.use('/graphql', graphqlHttp({
             });
 
             try {
+                family_schema.save();
             return "success";
             
           }
@@ -143,7 +145,7 @@ app.use('/graphql', graphqlHttp({
 
         },
         updateGeneralInfo(args,parent){
-           
+           if(mongoose.Types.ObjectId.isValid(args.id)){
             const filter={_id:args.id};
             const keys=Object.keys(args.input);
             let update={}
@@ -151,16 +153,25 @@ app.use('/graphql', graphqlHttp({
                 update['general.'+element]=args.input[element]
 
             });
-            console.log(update);
-            console.log(args.id);
+            
 
            
             return family_info.updateOne(filter,{"$set":update},function(err,collection){
                 if(err) throw err;
             })
+        }
+        else{
+            return {
+                n:-1,
+                ok:-1,
+                nModified:-1
+
+            };
+        }
 
         },
         updateMembers(args,parents){
+            if(mongoose.Types.ObjectId.isValid(args.memberid)){
             const filter={'members.memberid':args.memberid};
             const keys=Object.keys(args.input);
             let update={}
@@ -174,9 +185,20 @@ app.use('/graphql', graphqlHttp({
                
                 return family_info.updateOne(filter,{"$set":update},function(err,collection){
                     if(err) throw err;
-                })
+                });
+            }
+            else{
+                return {
+                    n:-1,
+                    ok:-1,
+                    nModified:-1
+    
+                };
+
+            }
         },
         updateEligibleCoupleName(args,parent){
+            if(mongoose.Types.ObjectId.isValid(args.eligibleCoupleNameId)){
             const filter={'eligibleCoupleName.eligibleCoupleNameId':args.eligibleCoupleNameId};
             const keys=Object.keys(args.input);
             let update={}
@@ -210,10 +232,21 @@ app.use('/graphql', graphqlHttp({
                 return family_info.updateOne(filter,{"$set":update},function(err,collection){
                     if(err) throw err;
                 });
+            }
+            else{
+                return {
+                    n:-1,
+                    ok:-1,
+                    nModified:-1
+    
+                };
+
+            }
 
         },
         updateChildren(args,parent){
-
+            
+            if(mongoose.Types.ObjectId.isValid(args.childrenObjectId)){
             const filter={'children.childrenObjectId':args.childrenObjectId};
             const keys=Object.keys(args.input);
             let update={}
@@ -238,10 +271,22 @@ app.use('/graphql', graphqlHttp({
                 return family_info.updateOne(filter,{"$set":update},function(err,collection){
                     if(err) throw err;
                 });
+            }
+            else{
+
+                return {
+                    n:-1,
+                    ok:-1,
+                    nModified:-1
+    
+                };
+            }
 
         },
         updatePregnancy(args,parent){
-
+            console.log()
+            console.log(mongoose.Types.ObjectId.isValid(args.pregnancyId));
+            if(mongoose.Types.ObjectId.isValid(args.pregnancyId)){
             const filter={'pregnancy.pregnancyId':args.pregnancyId};
             const keys=Object.keys(args.input);
             let update={}
@@ -279,6 +324,15 @@ app.use('/graphql', graphqlHttp({
             return family_info.updateOne(filter,{"$set":update},function(err,collection){
                 if(err) throw err;
             });
+        }
+        else{
+            return {
+                n:-1,
+                ok:-1,
+                nModified:-1
+
+            };
+        }
                
         },
 

@@ -132,8 +132,6 @@ module.exports=buildSchema(`
   
   }
   
-
-  
   input IfNoOptionInput
   {
     futureMethod: String
