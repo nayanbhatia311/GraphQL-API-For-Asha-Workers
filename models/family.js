@@ -34,6 +34,7 @@ const familySchema=new Schema({
         }],
         children: [{
             childrenObjectId:Schema.Types.ObjectId,
+            eligibleCoupleNameObjectId:Schema.Types.ObjectId,
             coupleid: Number,
             childname: String,
             childRCH: String,

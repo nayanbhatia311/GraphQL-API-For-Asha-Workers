@@ -337,12 +337,12 @@ app.use('/graphql', graphqlHttp({
         addMembers(args,parents){
             if(mongoose.Types.ObjectId.isValid(args.id)){
             let members_copy=args.input
-            if(members_copy.length>0){
-            for(i=0;i<members_copy.length;i++){
+            // if(members_copy.length>0){
+            // for(i=0;i<members_copy.length;i++){
                 
-                members_copy[i]['memberid']=new ObjectID();
-            }
-        }
+            //     members_copy[i]['memberid']=new ObjectID();
+            // }
+        // }
             
             
             family_info.updateOne({_id:args.id},{$push:{members:members_copy}},function (error, success) {
@@ -363,12 +363,12 @@ app.use('/graphql', graphqlHttp({
         addEligibleCoupleName(args,parents){
             if(mongoose.Types.ObjectId.isValid(args.id)){
             let eligibileCoupleName_copy=args.input
-            if(eligibileCoupleName_copy.length>0){
-            for(i=0;i<eligibileCoupleName_copy.length;i++){
+            // if(eligibileCoupleName_copy.length>0){
+            // for(i=0;i<eligibileCoupleName_copy.length;i++){
                 
-                eligibileCoupleName_copy[i]['eligibleCoupleNameId']=new ObjectID();
-            }
-        }
+            //     eligibileCoupleName_copy[i]['eligibleCoupleNameId']=new ObjectID();
+            // }
+        // }
             
             
             family_info.updateOne({_id:args.id},{$push:{eligibleCoupleName:eligibileCoupleName_copy}},function (error, success) {
@@ -390,12 +390,12 @@ app.use('/graphql', graphqlHttp({
         addChildren(args,parents){
             if(mongoose.Types.ObjectId.isValid(args.id)){
             let Children_copy=args.input
-            if(Children_copy.length>0){
-            for(i=0;i<Children_copy.length;i++){
+            // if(Children_copy.length>0){
+            // for(i=0;i<Children_copy.length;i++){
             
-                Children_copy[i]['childrenObjectId']=new ObjectID();
-            }
-        }
+            //     Children_copy[i]['childrenObjectId']=new ObjectID();
+            // }
+        // }
             
             
             family_info.updateOne({_id:args.id},{$push:{children:Children_copy}},function (error, success) {
@@ -417,12 +417,12 @@ app.use('/graphql', graphqlHttp({
         addPregnancy(args,parents){
             if(mongoose.Types.ObjectId.isValid(args.id)){
             let Pregnancy_copy=args.input
-            if(Pregnancy_copy.length>0){
-            for(i=0;i<Pregnancy_copy.length;i++){
+            // if(Pregnancy_copy.length>0){
+            // for(i=0;i<Pregnancy_copy.length;i++){
         
-                Pregnancy_copy[i]['pregnancyId']=new ObjectID();
-            }
-        }
+            //     Pregnancy_copy[i]['pregnancyId']=new ObjectID();
+            // }
+        // }
             
             
             family_info.updateOne({_id:args.id},{$push:{pregnancy:Pregnancy_copy}},function (error, success) {
