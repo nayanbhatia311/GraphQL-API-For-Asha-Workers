@@ -21,6 +21,7 @@ const familySchema=new Schema({
             belowPovertyLine: Boolean
         },
         members: [{
+            _id:false,
             memberid:Schema.Types.ObjectId,
             membername: String,
             age: Number,
@@ -33,6 +34,7 @@ const familySchema=new Schema({
             modality: [String]
         }],
         children: [{
+            _id:false,
             childrenObjectId:Schema.Types.ObjectId,
             eligibleCoupleNameObjectId:Schema.Types.ObjectId,
             coupleid: Number,
@@ -50,6 +52,7 @@ const familySchema=new Schema({
             }
         }],
         pregnancy: [{
+            _id:false,
             pregnancyId:Schema.Types.ObjectId,
             para: Number,
             name: String,
@@ -73,6 +76,7 @@ const familySchema=new Schema({
             }
         }],
         eligibleCoupleName: [{
+            _id:false,
             eligibleCoupleNameId:Schema.Types.ObjectId,
             husband: String,
             wife: String,
