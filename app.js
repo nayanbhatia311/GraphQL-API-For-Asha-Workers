@@ -344,7 +344,7 @@ app.use('/graphql', graphqlHttp({
             // }
         // }
             
-            family_info.updateOne({_id:args.id},{$push:{members:members_copy}},function (error, success) {
+           return family_info.updateOne({_id:args.id},{$push:{members:members_copy}},function (error, success) {
                 if (error) {
                     console.log(error);
                 } else {
@@ -352,10 +352,15 @@ app.use('/graphql', graphqlHttp({
                 }
             });
             
-            return "success";
+           
         }
             else{
-                return "Invalid Object id";
+                return {
+                    n:-1,
+                    ok:-1,
+                    nModified:-1
+    
+                };
             }
             },
         addEligibleCoupleName(args,parents){
@@ -369,7 +374,7 @@ app.use('/graphql', graphqlHttp({
         // }
             
             
-            family_info.updateOne({_id:args.id},{$push:{eligibleCoupleName:eligibileCoupleName_copy}},function (error, success) {
+         return family_info.updateOne({_id:args.id},{$push:{eligibleCoupleName:eligibileCoupleName_copy}},function (error, success) {
                 if (error) {
                     console.log(error);
                 } else {
@@ -377,10 +382,15 @@ app.use('/graphql', graphqlHttp({
                 }
             });
             
-            return "success";
+            
         }
         else{
-            return "Invalid Object id";
+            return {
+                n:-1,
+                ok:-1,
+                nModified:-1
+
+            };
             
         }
 
@@ -396,7 +406,7 @@ app.use('/graphql', graphqlHttp({
         // }
             
             
-            family_info.updateOne({_id:args.id},{$push:{children:Children_copy}},function (error, success) {
+           return family_info.updateOne({_id:args.id},{$push:{children:Children_copy}},function (error, success) {
                 if (error) {
                     console.log(error);
                 } else {
@@ -404,10 +414,15 @@ app.use('/graphql', graphqlHttp({
                 }
             });
             
-            return "success";
+        
         }
         else{
-            return "Invalid Object id";
+            return {
+                n:-1,
+                ok:-1,
+                nModified:-1
+
+            };
             
         }
 
@@ -423,7 +438,7 @@ app.use('/graphql', graphqlHttp({
         // }
             
             
-            family_info.updateOne({_id:args.id},{$push:{pregnancy:Pregnancy_copy}},function (error, success) {
+           return family_info.updateOne({_id:args.id},{$push:{pregnancy:Pregnancy_copy}},function (error, success) {
                 if (error) {
                     console.log(error);
                 } else {
@@ -431,10 +446,15 @@ app.use('/graphql', graphqlHttp({
                 }
             });
             
-            return "success";
+            
         }
         else{
-            return "Invalid Object id";
+            return {
+                n:-1,
+                ok:-1,
+                nModified:-1
+
+            };
             
         }
 
