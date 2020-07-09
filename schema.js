@@ -263,10 +263,10 @@ module.exports=buildSchema(`
     updateChildren(childrenObjectId:ID!,input:ChildrenInput):modifiedMongo
     updatePregnancy(pregnancyId:ID!,input:PregnancyInput):modifiedMongo
 
-    addMembers(id:ID!,input:[MembersInput]):String
-    addEligibleCoupleName(id:ID!,input:[EligibleCoupleNameInput]):String
-    addChildren(id:ID!,input:[ChildrenInput]):String
-    addPregnancy(id:ID!,input:[PregnancyInput]):String
+    addMembers(id:ID!,input:[MembersInput]):modifiedMongo
+    addEligibleCoupleName(id:ID!,input:[EligibleCoupleNameInput]):modifiedMongo
+    addChildren(id:ID!,input:[ChildrenInput]):modifiedMongo
+    addPregnancy(id:ID!,input:[PregnancyInput]):modifiedMongo
 
 
   }
