@@ -147,7 +147,7 @@ module.exports=buildSchema(`
 
   input EligibleCoupleNameInput
   {
-    eligibleCoupleNameId:ID!
+    eligibleCoupleNameId:ID
     husband: String
     wife: String
     coupleid: Int
@@ -173,7 +173,7 @@ module.exports=buildSchema(`
 
   input PregnancyInput
   {
-    pregnancyId:ID!
+    pregnancyId:ID
     para: Int
     name: String
     complicationPreviousPregnancy: String
@@ -199,7 +199,7 @@ module.exports=buildSchema(`
   }
   input ChildrenInput
   {
-    childrenObjectId:ID!
+    childrenObjectId:ID
     eligibleCoupleNameObjectId:ID!
     coupleid: Int
     childname: String
@@ -209,7 +209,7 @@ module.exports=buildSchema(`
 
   input MembersInput
   {
-    memberid:ID!
+    memberid:ID
     membername: String
     age: Int
     sex: String
