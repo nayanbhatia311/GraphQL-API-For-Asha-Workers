@@ -134,8 +134,8 @@ app.use('/graphql', graphqlHttp({
             });
 
             try {
-                family_schema.save();
-            return "success";
+               return family_schema.save();
+            // return "success";
             
           }
           catch (err) {
