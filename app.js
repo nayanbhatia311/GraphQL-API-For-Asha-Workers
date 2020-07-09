@@ -334,7 +334,7 @@ app.use('/graphql', graphqlHttp({
                
         },
 
-        addMembers(args,parents){
+        async addMembers(args,parents){
             if(mongoose.Types.ObjectId.isValid(args.id)){
             let members_copy=args.input;
             // if(members_copy.length>0){
@@ -344,13 +344,7 @@ app.use('/graphql', graphqlHttp({
             // }
         // }
             
-           return family_info.updateOne({_id:args.id},{$push:{members:members_copy}},function (error, success) {
-                if (error) {
-                    console.log(error);
-                } else {
-                    console.log(success);
-                }
-            });
+          return family_info.updateOne({_id:args.id},{$push:{members:members_copy}});
             
            
         }
@@ -363,7 +357,7 @@ app.use('/graphql', graphqlHttp({
                 };
             }
             },
-        addEligibleCoupleName(args,parents){
+        async addEligibleCoupleName(args,parents){
             if(mongoose.Types.ObjectId.isValid(args.id)){
             let eligibileCoupleName_copy=args.input;
             // if(eligibileCoupleName_copy.length>0){
@@ -374,13 +368,7 @@ app.use('/graphql', graphqlHttp({
         // }
             
             
-         return family_info.updateOne({_id:args.id},{$push:{eligibleCoupleName:eligibileCoupleName_copy}},function (error, success) {
-                if (error) {
-                    console.log(error);
-                } else {
-                    console.log(success);
-                }
-            });
+         return family_info.updateOne({_id:args.id},{$push:{eligibleCoupleName:eligibileCoupleName_copy}});
             
             
         }
@@ -395,7 +383,7 @@ app.use('/graphql', graphqlHttp({
         }
 
         },
-        addChildren(args,parents){
+        async addChildren(args,parents){
             if(mongoose.Types.ObjectId.isValid(args.id)){
             let Children_copy=args.input;
             // if(Children_copy.length>0){
@@ -406,13 +394,7 @@ app.use('/graphql', graphqlHttp({
         // }
             
             
-           return family_info.updateOne({_id:args.id},{$push:{children:Children_copy}},function (error, success) {
-                if (error) {
-                    console.log(error);
-                } else {
-                    console.log(success);
-                }
-            });
+           return family_info.updateOne({_id:args.id},{$push:{children:Children_copy}});
             
         
         }
@@ -427,7 +409,7 @@ app.use('/graphql', graphqlHttp({
         }
 
         },
-        addPregnancy(args,parents){
+        async addPregnancy(args,parents){
             if(mongoose.Types.ObjectId.isValid(args.id)){
             let Pregnancy_copy=args.input;
             // if(Pregnancy_copy.length>0){
@@ -438,13 +420,7 @@ app.use('/graphql', graphqlHttp({
         // }
             
             
-           return family_info.updateOne({_id:args.id},{$push:{pregnancy:Pregnancy_copy}},function (error, success) {
-                if (error) {
-                    console.log(error);
-                } else {
-                    console.log(success);
-                }
-            });
+           return family_info.updateOne({_id:args.id},{$push:{pregnancy:Pregnancy_copy}});
             
             
         }
