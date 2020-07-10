@@ -200,7 +200,7 @@ module.exports=buildSchema(`
   input ChildrenInput
   {
     childrenObjectId:ID
-    eligibleCoupleNameObjectId:ID!
+    eligibleCoupleNameObjectId:ID
     coupleid: Int
     childname: String
     childRCH: String
