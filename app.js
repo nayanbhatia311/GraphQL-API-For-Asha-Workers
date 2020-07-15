@@ -50,6 +50,7 @@ app.use('/graphql', graphqlHttp({
                     membername: args.input.members[i].membername,
                     sex: args.input.members[i].sex,
                     age: args.input.members[i].age,
+                    mobile_no:args.input.members[i].mobile_no,
                     addhar_no: args.input.members[i].addhar_no,
                     bank_acc: args.input.members[i].bank_acc,
                     bank_name: args.input.members[i].bank_name,
@@ -65,6 +66,8 @@ app.use('/graphql', graphqlHttp({
                 let eligibleCoupleName = {
                     husband: args.input.eligibleCoupleName[i].husband,
                     wife: args.input.eligibleCoupleName[i].wife,
+                    husbandCoupleID:args.input.eligibleCoupleName[i].husbandCoupleID,
+                    wifeCoupleID:args.input.eligibleCoupleName[i].wifeCoupleID,
                     coupleid: args.input.eligibleCoupleName[i].coupleid,
                     familyPlanningMethod: args.input.eligibleCoupleName[i].familyPlanningMethod,
                     ifNoOption: {
@@ -81,6 +84,7 @@ app.use('/graphql', graphqlHttp({
                 let pregnancy = {
                     para: args.input.pregnancy[i].para,
                     name: args.input.pregnancy[i].name,
+                    momObjectID:args.input.pregnancy[i].momObjectID,
                     complicationPreviousPregnancy: args.input.pregnancy[i].complicationPreviousPregnancy,
                     lastMenstrualDate: args.input.pregnancy[i].lastMenstrualDate,
                     expectedDateDelivery: args.input.pregnancy[i].expectedDateDelivery,
