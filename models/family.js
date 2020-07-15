@@ -22,6 +22,7 @@ const familySchema=new Schema({
         },
         members: [{
             _id:false,
+            mobile_no:String,
             memberid:Schema.Types.ObjectId,
             membername: String,
             age: Number,
@@ -53,6 +54,7 @@ const familySchema=new Schema({
         }],
         pregnancy: [{
             _id:false,
+            momObjectID:Schema.Types.ObjectId,
             pregnancyId:Schema.Types.ObjectId,
             para: Number,
             name: String,
@@ -80,6 +82,8 @@ const familySchema=new Schema({
             eligibleCoupleNameId:Schema.Types.ObjectId,
             husband: String,
             wife: String,
+            husbandCoupleID:Schema.Types.ObjectId,
+            wifeCoupleID:Schema.Types.ObjectId,
             coupleid: Number,
             totalChildren: {
                 male: Number,

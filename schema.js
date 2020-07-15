@@ -18,6 +18,8 @@ module.exports=buildSchema(`
   type EligibleCoupleName
   {
     eligibleCoupleNameId:ID
+    husbandCoupleID:ID
+    wifeCoupleID:ID
     husband: String
     wife: String
     coupleid: Int
@@ -51,7 +53,7 @@ module.exports=buildSchema(`
     complicationPreviousPregnancy: String
     lastMenstrualDate: Float
     expectedDateDelivery: Float
-    
+    momObjectID:ID
     expectedPlaceDelivery: String
     registrationDate: Float
     delivery: Delivery
@@ -86,6 +88,7 @@ module.exports=buildSchema(`
     membername: String
     age: Int
     sex: String
+    mobile_no:String
     addhar_no: Float
     bank_acc: String
     bank_name: String
@@ -148,6 +151,8 @@ module.exports=buildSchema(`
   input EligibleCoupleNameInput
   {
     eligibleCoupleNameId:ID
+    husbandCoupleID:ID
+    wifeCoupleID:ID
     husband: String
     wife: String
     coupleid: Int
@@ -174,6 +179,7 @@ module.exports=buildSchema(`
   input PregnancyInput
   {
     pregnancyId:ID
+    momObjectID:ID
     para: Int
     name: String
     complicationPreviousPregnancy: String
@@ -214,6 +220,7 @@ module.exports=buildSchema(`
     age: Int
     sex: String
     addhar_no: Float
+    mobile_no:String
     bank_acc: String
     bank_name: String
     disability_type: [String]
