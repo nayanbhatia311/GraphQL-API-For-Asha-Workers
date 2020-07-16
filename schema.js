@@ -24,7 +24,7 @@ module.exports=buildSchema(`
     wife: String
     coupleid: Int
     familyPlanningMethod: String
-    fpmdates:[Float]
+    fpmdates:[String]
     ifNoOption: IfNoOption
     totalChildren: TotalChildren
   }
@@ -137,8 +137,8 @@ module.exports=buildSchema(`
   input IfNoOptionInput
   {
     futureMethod: String
-    dateOfVisit: Float
-    dateOfGroupMeeting: Float
+    dateOfVisit: String
+    dateOfGroupMeeting: String
   }
   input TotalChildrenInput
   {
@@ -167,13 +167,13 @@ module.exports=buildSchema(`
   }
   input PmmvyInput
   {
-    registrationDate: Float
-    sixmonthVisit: Float
-    Penta3date: Float
+    registrationDate: String
+    sixmonthVisit: String
+    Penta3date: String
   }
   input JsyInput
   {
-    paidAmount: Float benefitDate: Float
+    paidAmount: Float benefitDate: String
   }
 
   input PregnancyInput
@@ -183,10 +183,10 @@ module.exports=buildSchema(`
     para: Int
     name: String
     complicationPreviousPregnancy: String
-    lastMenstrualDate: Float
-    expectedDateDelivery: Float
+    lastMenstrualDate: String
+    expectedDateDelivery: String
     expectedPlaceDelivery: String
-    registrationDate: Float
+    registrationDate: String
     delivery: DeliveryInput
     PMMVY: PmmvyInput
     JSY: JsyInput
@@ -194,14 +194,14 @@ module.exports=buildSchema(`
 
   input VaccinationInput
   {
-    DPTB_OPVB_MR2_VitA2: [Float]
-    MR1_VitA1: [Float]
-    OPV_3_IPV2_Penta3_Rota3: [Float]
-    OPV_2_Penta_2_Rota_2: [Float]
-    OPV1_IPV1_Penta1_Rota1: [Float]
-    BCG: [Float]
-    B2VIT: [Float]
-    OPV: [Float]
+    DPTB_OPVB_MR2_VitA2: [String]
+    MR1_VitA1: [String]
+    OPV_3_IPV2_Penta3_Rota3: [String]
+    OPV_2_Penta_2_Rota_2: [String]
+    OPV1_IPV1_Penta1_Rota1: [String]
+    BCG: [String]
+    B2VIT: [String]
+    OPV: [String]
   }
   input ChildrenInput
   {

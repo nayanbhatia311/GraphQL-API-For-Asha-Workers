@@ -8,7 +8,10 @@ const family_info = require('./models/family');
 const AshaWorkerSchema=require('./models/Asha_worker');
 const cors=require("cors");
 
-
+function setDefaultVal(value){
+    console.log(value,typeof(value));
+    return (value === undefined) ? undefined : typeof(value)==="string"?value:value.map(Date.parse);
+ }  
 
 const app = express();
 app.use(cors());
@@ -72,9 +75,10 @@ app.use('/graphql', graphqlHttp({
                     familyPlanningMethod: args.input.eligibleCoupleName[i].familyPlanningMethod,
                     ifNoOption: {
                         futureMethod: args.input.eligibleCoupleName[i].ifNoOption.futureMethod,
-                        dateOfVisit: args.input.eligibleCoupleName[i].ifNoOption.dateOfVisit,
-                        dateOfGroupMeeting: args.input.eligibleCoupleName[i].ifNoOption.dateOfGroupMeeting
-                    }
+                        dateOfVisit: setDefaultVal(args.input.eligibleCoupleName[i].ifNoOption.dateOfVisit),
+                        dateOfGroupMeeting: setDefaultVal(args.input.eligibleCoupleName[i].ifNoOption.dateOfGroupMeeting)
+                    },
+                    fpmdates:args.input.eligibleCoupleName[i].fpmdates
 
                 };
                 eligibleCoupleNames.push(eligibleCoupleName);
@@ -86,30 +90,40 @@ app.use('/graphql', graphqlHttp({
                     name: args.input.pregnancy[i].name,
                     momObjectID:args.input.pregnancy[i].momObjectID,
                     complicationPreviousPregnancy: args.input.pregnancy[i].complicationPreviousPregnancy,
-                    lastMenstrualDate: args.input.pregnancy[i].lastMenstrualDate,
-                    expectedDateDelivery: args.input.pregnancy[i].expectedDateDelivery,
+                    lastMenstrualDate: setDefaultVal(args.input.pregnancy[i].lastMenstrualDate),
+                    expectedDateDelivery: setDefaultVal(args.input.pregnancy[i].expectedDateDelivery),
                     expectedPlaceDelivery: args.input.pregnancy[i].expectedPlaceDelivery,
-                    registrationDate: args.input.pregnancy[i].registrationDate,
+                    registrationDate: setDefaultVal(args.input.pregnancy[i].registrationDate),
                     delivery: args.input.pregnancy[i].delivery,
-                    PMMVY: args.input.pregnancy[i].PMMVY,
-                    JSY: args.input.pregnancy[i].JSY
+                    PMMVY: {
+                        registrationDate: setDefaultVal(args.input.pregnancy[i].PMMVY.registrationDate),
+                        sixmonthVisit: setDefaultVal(args.input.pregnancy[i].PMMVY.sixmonthVisit),
+                        Penta3date: setDefaultVal(args.input.pregnancy[i].PMMVY.Penta3date)
+                        
+                    },
+                    JSY:{ 
+                        paidAmount: args.input.pregnancy[i].JSY.paidAmount,
+                        benefitDate: setDefaultVal(args.input.pregnancy[i].JSY.benefitDate)
+                        
+                    }
                 };
                 pregnancies.push(pregnancy);
             };
 
             for (let i = 0; i < Object.keys(args.input.children).length; i++) {
+                
                 let child = {
                     childname: args.input.children[i].childname,
                     childRCH: args.input.children[i].childRCH,
                     vaccination: {
-                        OPV: args.input.children[i].OPV,
-                        B2VIT: args.input.children[i].B2VIT,
-                        BCG: args.input.children[i].BCG,
-                        OPV1IPV1Penta1Rota1: args.input.children[i].vaccination.OPV1IPV1Penta1Rota1,
-                        OPV2Penta2Rota2: args.input.children[i].vaccination.OPV2Penta2Rota2,
-                        OPV3IPV2Penta3Rota3: args.input.children[i].vaccination.OPV3IPV2Penta3Rota3,
-                        MR1VitA1: args.input.children[i].vaccination.MR1VitA1,
-                        DPTBOPVBMR2VitA2: args.input.children[i].vaccination.DPTBOPVBMR2VitA2
+                        OPV: setDefaultVal(args.input.children[i].vaccination.OPV),
+                        B2VIT: setDefaultVal(args.input.children[i].vaccination.B2VIT),
+                        BCG:setDefaultVal( args.input.children[i].vaccination.BCG),
+                        OPV1IPV1Penta1Rota1: setDefaultVal(args.input.children[i].vaccination.OPV1IPV1Penta1Rota1),
+                        OPV2Penta2Rota2: setDefaultVal(args.input.children[i].vaccination.OPV2Penta2Rota2),
+                        OPV3IPV2Penta3Rota3:setDefaultVal( args.input.children[i].vaccination.OPV3IPV2Penta3Rota3),
+                        MR1VitA1: setDefaultVal(args.input.children[i].vaccination.MR1VitA1),
+                        DPTBOPVBMR2VitA2: setDefaultVal(args.input.children[i].vaccination.DPTBOPVBMR2VitA2)
                     }
                 };
                 children.push(child);
