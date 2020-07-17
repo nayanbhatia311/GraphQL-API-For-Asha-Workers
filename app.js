@@ -10,7 +10,8 @@ const cors=require("cors");
 
 function setDefaultVal(value){
     console.log(value,typeof(value));
-    return (value === undefined) ? undefined : typeof(value)==="string"?value:value.map(Date.parse);
+    // return (value === undefined) ? undefined : typeof(value)==="string"?Date.parse(value):value.map(Date.parse);
+    return value;
  }  
 
 const app = express();
@@ -23,7 +24,7 @@ app.use('/graphql', graphqlHttp({
     
     rootValue: {
         getFamilies: ({ashaWorkerObjectid}) => {
-            return family_info.find({ashaWorkerObjectid:ashaWorkerObjectid}).populate('ashaWorkerObjectid');
+            return family_info.find({ashaWorkerObjectid:ashaWorkerObjectid}).lean().populate('ashaWorkerObjectid');
         },
         getAshaWorker:({_id})=>{
           
@@ -31,14 +32,21 @@ app.use('/graphql', graphqlHttp({
 
         },
         getFamily:({_id})=>{
-      
-          return family_info.findById(_id).populate('ashaWorkerObjectid');
+    //    let temp=family_info.findById(_id).populate('ashaWorkerObjectid').exec((err, docs)=> {
+    //         // console.log(docs);
+    //        return docs;
+        
+    //       });
+    //       console.log(temp);
+        
+        
+          return family_info.findById(_id).lean().populate('ashaWorkerObjectid').exec();
 
         },
         searchName:({name})=>{
             let search=`\"${name}\""`
             console.log(search);
-            return family_info.find({ $text: { $search: search } }).populate('ashaWorkerObjectid');
+            return family_info.find({ $text: { $search: search } }).lean().populate('ashaWorkerObjectid');
         },
         createFamily: async (args, parent) => {
       
@@ -95,17 +103,8 @@ app.use('/graphql', graphqlHttp({
                     expectedPlaceDelivery: args.input.pregnancy[i].expectedPlaceDelivery,
                     registrationDate: setDefaultVal(args.input.pregnancy[i].registrationDate),
                     delivery: args.input.pregnancy[i].delivery,
-                    PMMVY: {
-                        registrationDate: setDefaultVal(args.input.pregnancy[i].PMMVY.registrationDate),
-                        sixmonthVisit: setDefaultVal(args.input.pregnancy[i].PMMVY.sixmonthVisit),
-                        Penta3date: setDefaultVal(args.input.pregnancy[i].PMMVY.Penta3date)
-                        
-                    },
-                    JSY:{ 
-                        paidAmount: args.input.pregnancy[i].JSY.paidAmount,
-                        benefitDate: setDefaultVal(args.input.pregnancy[i].JSY.benefitDate)
-                        
-                    }
+                    PMMVY: args.input.pregnancy[i].PMMVY,
+                    JSY:args.input.pregnancy[i].JSY
                 };
                 pregnancies.push(pregnancy);
             };

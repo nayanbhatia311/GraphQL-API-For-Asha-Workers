@@ -42,14 +42,14 @@ const familySchema=new Schema({
             childname: String,
             childRCH: String,
             vaccination: {
-                OPV: [String],
-                B2VIT: [String],
-                BCG: [String],
-                OPV1_IPV1_Penta1_Rota1: [String],
-                OPV_2_Penta_2_Rota_2: [String],
-                OPV_3_IPV2_Penta3_Rota3: [String],
-                MR1_VitA1: [String],
-                DPTB_OPVB_MR2_VitA2: [String]
+                OPV: [Date],
+                B2VIT: [Date],
+                BCG: [Date],
+                OPV1_IPV1_Penta1_Rota1: [Date],
+                OPV_2_Penta_2_Rota_2: [Date],
+                OPV_3_IPV2_Penta3_Rota3: [Date],
+                MR1_VitA1: [Date],
+                DPTB_OPVB_MR2_VitA2: [Date]
             }
         }],
         pregnancy: [{
@@ -59,18 +59,18 @@ const familySchema=new Schema({
             para: Number,
             name: String,
             complicationPreviousPregnancy: String,
-            lastMenstrualString: String,
-            expectedStringDelivery: String,
+            lastMenstrualDate: Date,
+            expectedDateDelivery: Date,
             expectedPlaceDelivery: String,
-            registrationString: String,
+            registrationDate: Date,
             JSY: {
                 paidAmount: Number,
-                benefitString: String
+                benefitDate: Date
             },
             PMMVY: {
-                registrationString: String,
-                sixmonthVisit: String,
-                Penta3String: String,
+                registrationDate: Date,
+                sixmonthVisit: Date,
+                Penta3date: Date,
             },
             delivery: {
                 typeOfPregnancy: String,
@@ -94,10 +94,10 @@ const familySchema=new Schema({
             familyPlanningMethod: String,
             ifNoOption: {
                 futureMethod: String,
-                StringOfVisit: String,
-                StringOfGroupMeeting: String
+                dateOfVisit: Date,
+                dateOfGroupMeeting: Date
             },
-            fpmStrings: [String]
+            fpmdates: [Date]
         }],
         
 

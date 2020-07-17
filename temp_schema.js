@@ -4,8 +4,8 @@ module.exports=buildSchema(`
   type IfNoOption
   {
     futureMethod: String
-    dateOfVisit: String
-    dateOfGroupMeeting: String
+    dateOfVisit: Float
+    dateOfGroupMeeting: Float
   }
   type TotalChildren
   {
@@ -36,13 +36,13 @@ module.exports=buildSchema(`
   }
   type Pmmvy
   {
-    registrationDate: String
-    sixmonthVisit: String
-    Penta3date: String
+    registrationDate: Float
+    sixmonthVisit: Float
+    Penta3date: Float
   }
   type Jsy
   {
-    paidAmount: Float benefitDate: String
+    paidAmount: Float benefitDate: Float
   }
 
   type Pregnancy
@@ -51,11 +51,11 @@ module.exports=buildSchema(`
     para: Int
     name: String
     complicationPreviousPregnancy: String
-    lastMenstrualDate: String
-    expectedDateDelivery: String
+    lastMenstrualDate: Float
+    expectedDateDelivery: Float
     momObjectID:ID
     expectedPlaceDelivery: String
-    registrationDate: String
+    registrationDate: Float
     delivery: Delivery
     PMMVY: Pmmvy
     JSY: Jsy
@@ -63,14 +63,14 @@ module.exports=buildSchema(`
 
   type Vaccination
   {
-    DPTB_OPVB_MR2_VitA2: [String]
-    MR1_VitA1: [String]
-    OPV_3_IPV2_Penta3_Rota3: [String]
-    OPV_2_Penta_2_Rota_2: [String]
-    OPV1_IPV1_Penta1_Rota1: [String]
-    BCG: [String]
-    B2VIT: [String]
-    OPV: [String]
+    DPTB_OPVB_MR2_VitA2: [Float]
+    MR1_VitA1: [Float]
+    OPV_3_IPV2_Penta3_Rota3: [Float]
+    OPV_2_Penta_2_Rota_2: [Float]
+    OPV1_IPV1_Penta1_Rota1: [Float]
+    BCG: [Float]
+    B2VIT: [Float]
+    OPV: [Float]
   }
   type Children
   {
