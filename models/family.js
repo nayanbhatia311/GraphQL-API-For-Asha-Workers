@@ -27,7 +27,7 @@ const familySchema=new Schema({
             membername: String,
             age: Number,
             sex: String,
-            addhar_no: Number,
+            addhar_no: String,
             bank_acc: String,
             bank_name: String,
             disability_type: [String],
@@ -37,6 +37,7 @@ const familySchema=new Schema({
         children: [{
             _id:false,
             childrenObjectId:Schema.Types.ObjectId,
+            childrenMemberId:Schema.Types.ObjectId,
             eligibleCoupleNameObjectId:Schema.Types.ObjectId,
             coupleid: Number,
             childname: String,

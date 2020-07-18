@@ -80,6 +80,7 @@ module.exports=buildSchema(`
     childname: String
     childRCH: String
     vaccination: Vaccination
+    childrenMemberId:ID
   }
 
   type Members
@@ -89,7 +90,7 @@ module.exports=buildSchema(`
     age: Int
     sex: String
     mobile_no:String
-    addhar_no: Float
+    addhar_no: String
     bank_acc: String
     bank_name: String
     disability_type: [String]
@@ -211,6 +212,7 @@ module.exports=buildSchema(`
     childname: String
     childRCH: String
     vaccination: VaccinationInput
+    childrenMemberId:ID
   }
 
   input MembersInput
@@ -219,7 +221,7 @@ module.exports=buildSchema(`
     membername: String
     age: Int
     sex: String
-    addhar_no: Float
+    addhar_no: String
     mobile_no:String
     bank_acc: String
     bank_name: String

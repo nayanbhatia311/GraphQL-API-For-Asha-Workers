@@ -114,6 +114,10 @@ app.use('/graphql', graphqlHttp({
                 let child = {
                     childname: args.input.children[i].childname,
                     childRCH: args.input.children[i].childRCH,
+                    childrenMemberId:args.input.children[i].childrenMemberId,
+                    childrenObjectId:args.input.children[i].childrenObjectId,
+                    eligibleCoupleNameObjectId:args.input.children[i].eligibleCoupleNameObjectId,
+                    coupleid: args.input.children[i].coupleid,
                     vaccination: {
                         OPV: setDefaultVal(args.input.children[i].vaccination.OPV),
                         B2VIT: setDefaultVal(args.input.children[i].vaccination.B2VIT),
