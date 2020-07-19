@@ -92,7 +92,7 @@ const familySchema=new Schema({
                 typeOfPregnancy: {
                     
                     type:String,
-                    enum:["योनि जन्म","सामान्य जन्म","वेळापत्रक योजना","योजनाबद्ध नसलेले","वि बी ए सी","इतर"] //vaginal birth natural birth schedule schezariun unscheduled schezariun vbac other
+                    enum:["सामान्य प्रसूती","सिझरियन प्रसूती"] 
                 }, //marathi 
                 outcomeOfPregnancy:  {
                     type:String,
