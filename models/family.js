@@ -3,45 +3,43 @@ const mongoose=require('mongoose');
 const Schema=mongoose.Schema;
 
 const familySchema=new Schema({
-
         ashaWorkerObjectid: {
             type: Schema.Types.ObjectId,
             ref: 'Asha_worker'
         },
-        mobileNo: Number,
         areaname: String,
         general: {
             _id:Schema.Types.ObjectId,
-            totalMembers: Number,
+
             toilet: Boolean,
             house: Boolean,
-            waterSupply: Boolean,
-            publicBoreHandpump: String,
-            category: String,
+         
+            publicBoreHandpump: String, //  " marathi "  
+            category: String, // sc st others   
             belowPovertyLine: Boolean
         },
         members: [{
             _id:false,
-            mobile_no:String,
+            mobile_no:String, //10  
             memberid:Schema.Types.ObjectId,
             membername: String,
-            age: Number,
-            sex: String,
-            addhar_no: String,
+            age: Number, // age valida
+            sex: String, // marathi 
+            addhar_no: String,  
             bank_acc: String,
             bank_name: String,
-            disability_type: [String],
-            disease: [String],
-            modality: [String]
+            disability_type: [String], //marathi mei 
+            disease: [String], //marathi mei
+            modality: [String] //marathi 
         }],
         children: [{
             _id:false,
             childrenObjectId:Schema.Types.ObjectId,
             childrenMemberId:Schema.Types.ObjectId,
             eligibleCoupleNameObjectId:Schema.Types.ObjectId,
-            coupleid: Number,
-            childname: String,
-            childRCH: String,
+            coupleid: Number, 
+            childname: String, // try mapping 
+            childRCH: String, 
             vaccination: {
                 OPV: [String],
                 B2VIT: [String],
@@ -57,13 +55,13 @@ const familySchema=new Schema({
             _id:false,
             momObjectID:Schema.Types.ObjectId,
             pregnancyId:Schema.Types.ObjectId,
-            para: Number,
-            name: String,
+            para: Number,  //validate
+            name: String,  //map
             complicationPreviousPregnancy: String,
             lastMenstrualDate: String,
             expectedDateDelivery: String,
             expectedPlaceDelivery: String,
-            registrationDate: String,
+          
             JSY: {
                 paidAmount: Number,
                 benefitDate: String
@@ -74,15 +72,15 @@ const familySchema=new Schema({
                 Penta3date: String,
             },
             delivery: {
-                typeOfPregnancy: String,
-                outcomeOfPregnancy: String
+                typeOfPregnancy: String, //marathi 
+                outcomeOfPregnancy: String //mpu str
             }
         }],
         eligibleCoupleName: [{
             _id:false,
             eligibleCoupleNameId:Schema.Types.ObjectId,
-            husband: String,
-            wife: String,
+            husband: String, //map
+            wife: String, //map
             husbandCoupleID:Schema.Types.ObjectId,
             wifeCoupleID:Schema.Types.ObjectId,
             coupleid: Number,
@@ -90,15 +88,15 @@ const familySchema=new Schema({
                 male: Number,
                 female: Number,
                 ageLastChild: Number,
-                genderLastChild: String
+                genderLastChild: String //male
             },
-            familyPlanningMethod: String,
+            familyPlanningMethod: String, // marathi mei 
             ifNoOption: {
-                futureMethod: String,
+                futureMethod: String, //marathi upar
                 dateOfVisit: String,
                 dateOfGroupMeeting: String
             },
-            fpmdates: [String]
+            fpmdates: [String] // cu t dates 
         }],
         
 

@@ -55,7 +55,7 @@ module.exports=buildSchema(`
     expectedDateDelivery: String
     momObjectID:ID
     expectedPlaceDelivery: String
-    registrationDate: String
+
     delivery: Delivery
     PMMVY: Pmmvy
     JSY: Jsy
@@ -100,10 +100,10 @@ module.exports=buildSchema(`
   }
   type General
   {
-    totalMembers: Int
+ 
     toilet: Boolean
     house: Boolean
-    waterSupply: Boolean
+   
     publicBoreHandpump: String
     category: String
     belowPovertyLine: Boolean
@@ -188,7 +188,7 @@ module.exports=buildSchema(`
     lastMenstrualDate: String
     expectedDateDelivery: String
     expectedPlaceDelivery: String
-    registrationDate: String
+
     delivery: DeliveryInput
     PMMVY: PmmvyInput
     JSY: JsyInput
@@ -233,10 +233,10 @@ module.exports=buildSchema(`
   }
   input GeneralInput
   {
-    totalMembers: Int
+   
     toilet: Boolean
     house: Boolean
-    waterSupply: Boolean
+
     publicBoreHandpump: String
     category: String
     belowPovertyLine: Boolean

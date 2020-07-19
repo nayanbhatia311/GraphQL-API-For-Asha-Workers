@@ -133,10 +133,10 @@ app.use('/graphql', graphqlHttp({
                 children: children,
                 members: members,
                 general: {
-                    totalMembers: args.input.general.totalMembers,
+            
                     toilet: args.input.general.toilet,
                     house: args.input.general.house,
-                    waterSupply: args.input.general.waterSupply,
+                  
                     publicBoreHandpump: args.input.general.publicBoreHandpump,
                     category: args.input.general.category,
                     belowPovertyLine: args.input.general.belowPovertyLine
