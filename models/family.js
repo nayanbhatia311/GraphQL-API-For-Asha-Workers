@@ -38,7 +38,7 @@ const familySchema=new Schema({
             bank_name: String,
             disability_type: {
                 type:[String],
-                enum:["इतर","डोळा","कान","ऑर्थो","इतर"] //bp heart disease  tb hypertension cancer 
+                enum:["डोळा","कान","ऑर्थो","इतर"] //bp heart disease  tb hypertension cancer 
             }, //marathi mei 
             disease: {
                 type:[String],
