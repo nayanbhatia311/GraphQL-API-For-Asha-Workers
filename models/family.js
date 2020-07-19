@@ -15,7 +15,7 @@ const familySchema=new Schema({
          
             publicBoreHandpump: {
                 type:String,
-                enum:["सार्वजनिक","विहीर","हातपंप","हातपंप"]
+                enum:["सार्वजनिक","विहीर","हातपंप","बोअर"]
             }, //  " marathi "  
             category: {
                 type:String,
