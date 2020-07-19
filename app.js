@@ -56,8 +56,10 @@ app.use('/graphql', graphqlHttp({
             let eligibleCoupleNames = [];
             let children = [];
             let pregnancies = [];
+            // console.log(args.input.members)
             for (let i = 0; i < Object.keys(args.input.members).length; i++) {
                 let member = {
+                    memberid:args.input.members[i].memberid,
                     membername: args.input.members[i].membername,
                     sex: args.input.members[i].sex,
                     age: args.input.members[i].age,
@@ -65,7 +67,7 @@ app.use('/graphql', graphqlHttp({
                     addhar_no: args.input.members[i].addhar_no,
                     bank_acc: args.input.members[i].bank_acc,
                     bank_name: args.input.members[i].bank_name,
-                    disability_input: args.input.members[i].disability_input,
+                    disability_type: args.input.members[i].disability_type,
                     disease: args.input.members[i].disease,
                     modality: args.input.members[i].modality
 
@@ -75,18 +77,16 @@ app.use('/graphql', graphqlHttp({
 
             for (let i = 0; i < Object.keys(args.input.eligibleCoupleName).length; i++) {
                 let eligibleCoupleName = {
+
                     husband: args.input.eligibleCoupleName[i].husband,
                     wife: args.input.eligibleCoupleName[i].wife,
                     husbandCoupleID:args.input.eligibleCoupleName[i].husbandCoupleID,
                     wifeCoupleID:args.input.eligibleCoupleName[i].wifeCoupleID,
                     coupleid: args.input.eligibleCoupleName[i].coupleid,
                     familyPlanningMethod: args.input.eligibleCoupleName[i].familyPlanningMethod,
-                    ifNoOption: {
-                        futureMethod: args.input.eligibleCoupleName[i].ifNoOption.futureMethod,
-                        dateOfVisit: setDefaultVal(args.input.eligibleCoupleName[i].ifNoOption.dateOfVisit),
-                        dateOfGroupMeeting: setDefaultVal(args.input.eligibleCoupleName[i].ifNoOption.dateOfGroupMeeting)
-                    },
-                    fpmdates:args.input.eligibleCoupleName[i].fpmdates
+                    ifNoOption: args.input.eligibleCoupleName[i].ifNoOption,
+                    fpmdates:args.input.eligibleCoupleName[i].fpmdates,
+                    totalChildren: args.input.eligibleCoupleName[i].TotalChildrenInput
 
                 };
                 eligibleCoupleNames.push(eligibleCoupleName);
@@ -94,6 +94,7 @@ app.use('/graphql', graphqlHttp({
 
             for (let i = 0; i < Object.keys(args.input.pregnancy).length; i++) {
                 let pregnancy = {
+                    pregnancyId:args.input.pregnancy[i].pregnancyId,
                     para: args.input.pregnancy[i].para,
                     name: args.input.pregnancy[i].name,
                     momObjectID:args.input.pregnancy[i].momObjectID,
@@ -118,16 +119,7 @@ app.use('/graphql', graphqlHttp({
                     childrenObjectId:args.input.children[i].childrenObjectId,
                     eligibleCoupleNameObjectId:args.input.children[i].eligibleCoupleNameObjectId,
                     coupleid: args.input.children[i].coupleid,
-                    vaccination: {
-                        OPV: setDefaultVal(args.input.children[i].vaccination.OPV),
-                        B2VIT: setDefaultVal(args.input.children[i].vaccination.B2VIT),
-                        BCG:setDefaultVal( args.input.children[i].vaccination.BCG),
-                        OPV1IPV1Penta1Rota1: setDefaultVal(args.input.children[i].vaccination.OPV1IPV1Penta1Rota1),
-                        OPV2Penta2Rota2: setDefaultVal(args.input.children[i].vaccination.OPV2Penta2Rota2),
-                        OPV3IPV2Penta3Rota3:setDefaultVal( args.input.children[i].vaccination.OPV3IPV2Penta3Rota3),
-                        MR1VitA1: setDefaultVal(args.input.children[i].vaccination.MR1VitA1),
-                        DPTBOPVBMR2VitA2: setDefaultVal(args.input.children[i].vaccination.DPTBOPVBMR2VitA2)
-                    }
+                    vaccination: args.input.children[i].vaccination
                 };
                 children.push(child);
             }
@@ -149,11 +141,11 @@ app.use('/graphql', graphqlHttp({
                     category: args.input.general.category,
                     belowPovertyLine: args.input.general.belowPovertyLine
 
-                },
+                }
 
 
             });
-
+            console.log(family_schema)
             try {
                return family_schema.save();
             // return "success";

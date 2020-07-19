@@ -96,6 +96,7 @@ module.exports=buildSchema(`
     disability_type: [String]
     disease: [String]
     modality: [String]
+    fpmdates:[String]
   }
   type General
   {
@@ -228,6 +229,7 @@ module.exports=buildSchema(`
     disability_type: [String]
     disease: [String]
     modality: [String]
+    fpmdates:[String]
   }
   input GeneralInput
   {

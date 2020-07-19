@@ -60,18 +60,18 @@ const familySchema=new Schema({
             para: Number,
             name: String,
             complicationPreviousPregnancy: String,
-            lastMenstrualString: String,
-            expectedStringDelivery: String,
+            lastMenstrualDate: String,
+            expectedDateDelivery: String,
             expectedPlaceDelivery: String,
-            registrationString: String,
+            registrationDate: String,
             JSY: {
                 paidAmount: Number,
-                benefitString: String
+                benefitDate: String
             },
             PMMVY: {
-                registrationString: String,
+                registrationDate: String,
                 sixmonthVisit: String,
-                Penta3String: String,
+                Penta3date: String,
             },
             delivery: {
                 typeOfPregnancy: String,
@@ -95,10 +95,10 @@ const familySchema=new Schema({
             familyPlanningMethod: String,
             ifNoOption: {
                 futureMethod: String,
-                StringOfVisit: String,
-                StringOfGroupMeeting: String
+                dateOfVisit: String,
+                dateOfGroupMeeting: String
             },
-            fpmStrings: [String]
+            fpmdates: [String]
         }],
         
 
