@@ -30,8 +30,8 @@ const familySchema=new Schema({
             membername: String,
             age: Number, // age valida
             sex: {
-                type:String
-                // enum:["पुरुष","स्त्री","इतर"]
+                type:String,
+                enum:["पुरुष","स्त्री","इतर"]
             }, // marathi 
             addhar_no: String,  
             bank_acc: String,
