@@ -10,12 +10,17 @@ const familySchema=new Schema({
         areaname: String,
         general: {
             _id:Schema.Types.ObjectId,
-
             toilet: Boolean,
             house: Boolean,
          
-            publicBoreHandpump: String, //  " marathi "  
-            category: String, // sc st others   
+            publicBoreHandpump: {
+                type:String,
+                enum:["सार्वजनिक","विहीर","हातपंप","हातपंप"]
+            }, //  " marathi "  
+            category: {
+                type:String,
+                enum:["प्रवर्ग अनुसूचित जाती","अनु.जमाती","इतर"]
+            }, // sc st others   
             belowPovertyLine: Boolean
         },
         members: [{
@@ -24,13 +29,25 @@ const familySchema=new Schema({
             memberid:Schema.Types.ObjectId,
             membername: String,
             age: Number, // age valida
-            sex: String, // marathi 
+            sex: {
+                type:String,
+                enum:["पुरुष","स्त्री","इतर"]
+            }, // marathi 
             addhar_no: String,  
             bank_acc: String,
             bank_name: String,
-            disability_type: [String], //marathi mei 
-            disease: [String], //marathi mei
-            modality: [String] //marathi 
+            disability_type: {
+                type:[String],
+                enum:["इतर","डोळा","कान","ऑर्थो","इतर"] //bp heart disease  tb hypertension cancer 
+            }, //marathi mei 
+            disease: {
+                type:[String],
+                enum:["उच्च रक्तदाब","हृदय रोग","टीबी","हायपर टेन्शन","कर्करोग","इतर"] //bp heart disease  tb hypertension cancer 
+            }, //marathi mei
+            modality: {
+                type:[String],
+                enum:["होमिओपॅथी","आयुर्वेदिक","अ‍ॅलोपॅथी","इतर"]
+            } //marathi 
         }],
         children: [{
             _id:false,
@@ -72,8 +89,15 @@ const familySchema=new Schema({
                 Penta3date: String,
             },
             delivery: {
-                typeOfPregnancy: String, //marathi 
-                outcomeOfPregnancy: String //mpu str
+                typeOfPregnancy: {
+                    
+                    type:String,
+                    enum:["योनि जन्म","सामान्य जन्म","वेळापत्रक योजना","योजनाबद्ध नसलेले","वि बी ए सी","इतर"] //vaginal birth natural birth schedule schezariun unscheduled schezariun vbac other
+                }, //marathi 
+                outcomeOfPregnancy:  {
+                    type:String,
+                    enum:["पुरुष","स्त्री","इतर"]
+                     }  //mpu str
             }
         }],
         eligibleCoupleName: [{
@@ -88,11 +112,20 @@ const familySchema=new Schema({
                 male: Number,
                 female: Number,
                 ageLastChild: Number,
-                genderLastChild: String //male
+                genderLastChild: {
+                    type:String,
+                    enum:["पुरुष","स्त्री","इतर"]
+                     }     //male
             },
-            familyPlanningMethod: String, // marathi mei 
+            familyPlanningMethod: {
+                type:String,
+                enum:["गर्भनिरोधक गोळ्या","कॉपर टी","अंतरा","निरोध",,"इतर"] //oral pills cu T antara condom other  
+            }, // marathi mei 
             ifNoOption: {
-                futureMethod: String, //marathi upar
+                futureMethod: {
+                    type:String,
+                    enum:["गर्भनिरोधक गोळ्या","कॉपर टी","अंतरा","निरोध",,"इतर"] //oral pills cu T antara condom other  
+                }, //marathi upar
                 dateOfVisit: String,
                 dateOfGroupMeeting: String
             },
