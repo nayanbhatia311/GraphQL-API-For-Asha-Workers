@@ -119,7 +119,7 @@ const familySchema=new Schema({
             },
             familyPlanningMethod: {
                 type:String,
-                enum:["गर्भनिरोधक गोळ्या","कॉपर टी","अंतरा","निरोध",,"नसबंदी","काहीही नाही"] //oral pills cu T antara condom   sterlisation no option
+                enum:["गर्भनिरोधक गोळ्या","कॉपर टी","अंतरा","निरोध","नसबंदी","काहीही नाही"] //oral pills cu T antara condom   sterlisation no option
             }, // marathi mei 
             ifNoOption: {
                 futureMethod: {
