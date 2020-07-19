@@ -96,7 +96,7 @@ module.exports=buildSchema(`
     disability_type: [String]
     disease: [String]
     modality: [String]
-    fpmdates:[String]
+
   }
   type General
   {
@@ -161,6 +161,7 @@ module.exports=buildSchema(`
     familyPlanningMethod: String
     ifNoOption: IfNoOptionInput
     totalChildren: TotalChildrenInput
+    fpmdates:[String]
   }
   input DeliveryInput
   {
@@ -229,7 +230,7 @@ module.exports=buildSchema(`
     disability_type: [String]
     disease: [String]
     modality: [String]
-    fpmdates:[String]
+  
   }
   input GeneralInput
   {

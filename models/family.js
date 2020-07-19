@@ -42,7 +42,7 @@ const familySchema=new Schema({
             }, //marathi mei 
             disease: {
                 type:[String]
-                // enum:["उच्च रक्तदाब","हृदय रोग","टीबी","हायपर टेन्शन","कर्करोग","मधुमेह","इतर"] //bp heart disease  tb hypertension cancer 
+                // enum:["उच्च रक्तदाब","हृदय रोग","टीबी","हायपर टेन्शन","कर्करोग","मधुमेह","इतर"] //bp heart disease  tb hypertension cancer diabetics
             }, //marathi mei
             modality: {
                 type:[String]
