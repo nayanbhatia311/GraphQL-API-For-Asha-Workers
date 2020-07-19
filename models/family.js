@@ -18,8 +18,8 @@ const familySchema=new Schema({
                 enum:["सार्वजनिक","विहीर","हातपंप","बोअर"]
             }, //  " marathi "  
             category: {
-                type:String,
-                enum:["प्रवर्ग अनुसूचित जाती","अनु.जमाती","इतर"]
+                type:String
+                // enum:["प्रवर्ग अनुसूचित जाती","अनु.जमाती","इतर"]
             }, // sc st others   
             belowPovertyLine: Boolean
         },
@@ -30,23 +30,23 @@ const familySchema=new Schema({
             membername: String,
             age: Number, // age valida
             sex: {
-                type:String,
-                enum:["पुरुष","स्त्री","इतर"]
+                type:String
+                // enum:["पुरुष","स्त्री","इतर"]
             }, // marathi 
             addhar_no: String,  
             bank_acc: String,
             bank_name: String,
             disability_type: {
-                type:[String],
-                enum:["डोळा","कान","ऑर्थो","इतर"] //bp heart disease  tb hypertension cancer 
+                type:[String]
+                // enum:["डोळा","कान","ऑर्थो","इतर"] //bp heart disease  tb hypertension cancer 
             }, //marathi mei 
             disease: {
-                type:[String],
-                enum:["उच्च रक्तदाब","हृदय रोग","टीबी","हायपर टेन्शन","कर्करोग","इतर"] //bp heart disease  tb hypertension cancer 
+                type:[String]
+                // enum:["उच्च रक्तदाब","हृदय रोग","टीबी","हायपर टेन्शन","कर्करोग","इतर"] //bp heart disease  tb hypertension cancer 
             }, //marathi mei
             modality: {
-                type:[String],
-                enum:["होमिओपॅथी","आयुर्वेदिक","अ‍ॅलोपॅथी","इतर"]
+                type:[String]
+                // enum:["होमिओपॅथी","आयुर्वेदिक","अ‍ॅलोपॅथी","इतर"]
             } //marathi 
         }],
         children: [{
@@ -119,12 +119,12 @@ const familySchema=new Schema({
             },
             familyPlanningMethod: {
                 type:String,
-                enum:["गर्भनिरोधक गोळ्या","कॉपर टी","अंतरा","निरोध",,"इतर"] //oral pills cu T antara condom other  
+                enum:["गर्भनिरोधक गोळ्या","कॉपर टी","अंतरा","निरोध",,"नसबंदी","काहीही नाही"] //oral pills cu T antara condom   sterlisation no option
             }, // marathi mei 
             ifNoOption: {
                 futureMethod: {
                     type:String,
-                    enum:["गर्भनिरोधक गोळ्या","कॉपर टी","अंतरा","निरोध",,"इतर"] //oral pills cu T antara condom other  
+                    enum:["गर्भनिरोधक गोळ्या","कॉपर टी","अंतरा","निरोध","नसबंदी","काहीही नाही"]//oral pills cu T antara condom   sterlisation no option
                 }, //marathi upar
                 dateOfVisit: String,
                 dateOfGroupMeeting: String
