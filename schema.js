@@ -50,7 +50,7 @@ module.exports=buildSchema(`
     pregnancyId:ID
     para: Int
     name: String
-    complicationPreviousPregnancy: String
+    complicationPreviousPregnancy: Boolean
     lastMenstrualDate: String
     expectedDateDelivery: String
     momObjectID:ID
@@ -185,7 +185,7 @@ module.exports=buildSchema(`
     momObjectID:ID
     para: Int
     name: String
-    complicationPreviousPregnancy: String
+    complicationPreviousPregnancy: Boolean
     lastMenstrualDate: String
     expectedDateDelivery: String
     expectedPlaceDelivery: String
