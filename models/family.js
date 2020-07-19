@@ -74,7 +74,7 @@ const familySchema=new Schema({
             pregnancyId:Schema.Types.ObjectId,
             para: Number,  //validate
             name: String,  //map
-            complicationPreviousPregnancy: Boolean,
+            complicationPreviousPregnancy: String,
             lastMenstrualDate: String,
             expectedDateDelivery: String,
             expectedPlaceDelivery: String,
