@@ -77,7 +77,7 @@ app.use('/graphql', graphqlHttp({
 
             for (let i = 0; i < Object.keys(args.input.eligibleCoupleName).length; i++) {
                 let eligibleCoupleName = {
-
+                    eligibleCoupleNameId:args.input.eligibleCoupleName[i].eligibleCoupleNameId,
                     husband: args.input.eligibleCoupleName[i].husband,
                     wife: args.input.eligibleCoupleName[i].wife,
                     husbandCoupleID:args.input.eligibleCoupleName[i].husbandCoupleID,
