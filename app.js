@@ -86,7 +86,7 @@ app.use('/graphql', graphqlHttp({
                     familyPlanningMethod: args.input.eligibleCoupleName[i].familyPlanningMethod,
                     ifNoOption: args.input.eligibleCoupleName[i].ifNoOption,
                     fpmdates:args.input.eligibleCoupleName[i].fpmdates,
-                    totalChildren: args.input.eligibleCoupleName[i].TotalChildrenInput
+                    totalChildren: args.input.eligibleCoupleName[i].TotalChildren
 
                 };
                 eligibleCoupleNames.push(eligibleCoupleName);
