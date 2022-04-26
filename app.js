@@ -457,7 +457,7 @@ app.use('/graphql', graphqlHttp({
 }));
 
 
-mongoose.connect(`mongodb://root:0LONzSmXMGrz@52.66.200.43:27017/Asha_hosp_Nayan?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false`,
+mongoose.connect(process.env.DATABASE_URL,
 { useNewUrlParser: true, useUnifiedTopology: true }
 )
 .then(() => app.listen(3000))
