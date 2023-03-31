@@ -17,9 +17,9 @@ How to run
 To run the application, first install the dependencies by running:  
 npm install  
 Then, create a .env file with the following environment variables:  
-DB_USERNAME=<your mongodb username> 
-DB_PASSWORD=<your mongodb password> 
-DB_NAME=<your mongodb database name> 
+DB_USERNAME="your mongodb username" 
+DB_PASSWORD="your mongodb password"  
+DB_NAME="your mongodb database name" 
 This will start the server on port 3000 by default.
 
 ## API Endpoints
